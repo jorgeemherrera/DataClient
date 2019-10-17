@@ -1,0 +1,35 @@
+{
+  "name": "gestion-usuarios",
+  "version": "1.0.0",
+  "description": "API REST para el CRUD de usuarios",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jorgeemherrera/DataClient.git"
+  },
+  "keywords": [
+    "Node.js",
+    "Express",
+    "MongoDB"
+  ],
+  "author": "Jorge Eliécer Muñoz Herrera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jorgeemherrera/DataClient/issues"
+  },
+  "homepage": "https://github.com/jorgeemherrera/DataClient#readme",
+  "dependencies": {
+    "body-parser": "1.7.0",
+    "express": "^4.8.7",
+    "jsonwebtoken": "^7.3.0",
+    "moment": "^2.17.1",
+    "moment-timezone": "^0.5.13",
+    "mongoose": "^5.1.1",
+    "node-uuid": "^1.4.8",
+    "swagger-ui-express": "^2.0.13",
+    "sync-request": "^4.0.2"
+  }
+}

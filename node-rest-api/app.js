@@ -18,7 +18,8 @@ mongoose.connect('mongodb+srv://jorgeHerrera:' + process.env.MONGO_ATLAS_PW +   
  useNewUrlParser: true,
  useUnifiedTopology: true
 }
-)
+);
+mongoose.Promise = global.Promise;
 /**
  * Let the access to all kind of servers
  */

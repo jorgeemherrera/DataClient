@@ -8,7 +8,17 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
+const productRoutes = require('./api/routes/products');
+const orderRoutes = require('./api/routes/orders');
+
+mongoose.connect('mongodb+srv://jorgeHerrera:' + process.env.MONGO_ATLAS_PW +           '@node-rest-api-zl10v.mongodb.net/test?retryWrites=true&w=majority',
+{
+ useNewUrlParser: true,
+ useUnifiedTopology: true
+}
+)
 /**
  * Let the access to all kind of servers
  */
@@ -22,8 +32,6 @@ app.use((req, res, next) => {
     next();
 });
 
-const productRoutes = require('./api/routes/products');
-const orderRoutes = require('./api/routes/orders');
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false}));

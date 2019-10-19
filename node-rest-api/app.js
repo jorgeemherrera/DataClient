@@ -25,7 +25,7 @@ mongoose.Promise = global.Promise;
  */
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-REquested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     if(req.method === 'OPTIONS'){
         res.header('Access-Control-Allow-Methods', 'PUT ,POST, PATCH, DELETE, GET');
         return res.status(200).json({});
@@ -35,6 +35,7 @@ app.use((req, res, next) => {
 
 
 app.use(morgan('dev'));
+app.use('/uploads', express.static('uploads')); // static available on /uploads
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 

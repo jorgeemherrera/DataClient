@@ -6,12 +6,17 @@ import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { Page404Component } from './components/page404/page404.component';
+import { ProductsComponent } from './components/products/products.component';
 
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent
+  },
+  {
+    path: 'products',
+    component: ProductsComponent
   },
   {
     path: 'admin/list-users',

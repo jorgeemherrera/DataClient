@@ -11,7 +11,13 @@ import { RegisterComponent } from './components/user/register/register.component
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { Page404Component } from './components/page404/page404.component';
 
-@NgModule({
+import { HttpClientModule } from '@angular/common/http';
+/**
+ * Services
+ */
+import { DataAPIService } from './services/data-api.service';
+import { ProductsComponent } from './components/products/products.component';
+ @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
@@ -20,13 +26,15 @@ import { Page404Component } from './components/page404/page404.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    Page404Component
+    Page404Component,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataAPIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

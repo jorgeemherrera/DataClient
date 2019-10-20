@@ -4,14 +4,16 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { AuthService } from './auth.service';
 import { map }  from 'rxjs/operators';
+
+import { ProductInterface } from '../models/product-interface';
 @Injectable({
   providedIn: 'root'
 })
 export class DataAPIService {
+  constructor(private http: HttpClient, private authService: AuthService) { }
+
   products: Observable<any>;
   product: Observable<any>;
-
-  constructor(private http: HttpClient, private authService: AuthService) { }
 
   headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json",
@@ -31,12 +33,12 @@ export class DataAPIService {
     return (this.product = this.http.get(url_api));
   }
 
-  saveProduct(product) {
+  saveProduct(product: ProductInterface) {
     // TODO: obtener token
     // TODO: not null
     let token = this.authService.getToken();
     const url_api = `http://localhost:3000/products/?token=${token}`;
-    return this.http.post(url_api, product, {headers: this.headers})
+    return this.http.post<ProductInterface>(url_api, product, {headers: this.headers})
     .pipe(map(data => data));
   }
 
@@ -45,7 +47,7 @@ export class DataAPIService {
     // TODO: not null
     let token = this.authService.getToken()
     const url_api = `http://localhost:3000/products/?token=${token}`;
-    return this.http.put(url_api, product,{headers: this.headers})
+    return this.http.put<ProductInterface>(url_api, product,{headers: this.headers})
     .pipe(map(data => data));
   }
   deleteProduct(_id: string) {
@@ -53,7 +55,7 @@ export class DataAPIService {
     // TODO: not null
     let token = this.authService.getToken()
     const url_api = `http://localhost:3000/products/?token=${token}`;
-    return this.http.delete(url_api, {headers: this.headers})
+    return this.http.delete<ProductInterface>(url_api, {headers: this.headers})
     .pipe(map(data => data));
   }
 }

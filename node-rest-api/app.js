@@ -16,10 +16,11 @@ const userRoutes = require('./api/routes/users');
 
 
 mongoose.connect('mongodb+srv://jorgeHerrera:' + process.env.MONGO_ATLAS_PW +           '@node-rest-api-zl10v.mongodb.net/test?retryWrites=true&w=majority',
-{
- useNewUrlParser: true,
- useUnifiedTopology: true
-}
+    {
+        useCreateIndex: true,
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }
 );
 mongoose.Promise = global.Promise;
 /**

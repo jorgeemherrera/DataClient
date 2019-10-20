@@ -1,6 +1,6 @@
 # DataClient: aplicación de Angular con API REST de Node.js
 
-Este proyecto es creado en Angular, con consumo de una API REST de Node.js creada qu contiene la lista de usuarios y empresas
+Este proyecto es creado en Angular, con consumo de una API REST de Node.js creada que contiene la lista de usuarios y empresas
 
 ## Tecnolgías utilizadas:
 

@@ -35,4 +35,4 @@ En su IDE o editor de código preferido abrir el proyecto (VS Code)
 * URL local: `http://localhost:4200/`.
 
 
- [Jorge Eliécer Muñoz Herrera](https://www.linkedin.com/in/jorgeemherrera/).
+ [Jorge Eliécer Muñoz Herrera](https://www.linkedin.com/in/jorgeemherrera/ "(target|_blank)").

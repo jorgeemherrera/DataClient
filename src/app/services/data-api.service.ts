@@ -25,7 +25,7 @@ export class DataAPIService {
    * Send all products
    */
   getAllProducts() {
-    const url_api = `http://localhost:3000/products/`;
+    const url_api = `http://localhost:3000/products`;
     return this.http.get(url_api);
   }
 

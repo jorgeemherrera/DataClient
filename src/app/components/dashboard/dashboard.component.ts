@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataAPIService } from 'src/app/services/data-api.service';
-import { ProductInterface } from '../../models/product-interface';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -9,27 +8,12 @@ import { ProductInterface } from '../../models/product-interface';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private dataAPI: DataAPIService) { }
+  constructor() { }
 
-  private products: ProductInterface;
+
 
   ngOnInit() {
-    this.getListProducts();
   }
 
-  // getListProducts() {
-  //   this.dataAPI.getAllProducts()
-  //     .subscribe((products) => {
-  //       console.log(products)
-  //     })
-  // }
-
-  getListProducts() {
-    this.dataAPI.getAllProducts()
-      .subscribe((products: ProductInterface) => (
-        this.products = products['products']
-      )
-      );
-  }
 
 }

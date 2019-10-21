@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { DataAPIService } from 'src/app/services/data-api.service';
+import { ProductInterface } from '../../models/product-interface';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataAPI: DataAPIService) { }
+
+  private products: ProductInterface;
 
   ngOnInit() {
-   
+    this.getListProducts();
+  }
+
+
+  // getListProducts() {
+  //   this.dataAPI.getAllProducts()
+  //     .subscribe((products) => {
+  //       console.log(products)
+  //     })
+  // }
+
+  getListProducts() {
+    this.dataAPI.getAllProducts()
+      .subscribe((products: ProductInterface) => (
+        this.products = products['products']
+      )
+      );
   }
 }

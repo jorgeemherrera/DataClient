@@ -1,1 +1,25 @@
-<p>products works!</p>
+<section id="products">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let product of products">
+        <div class="card_product">
+          <div class="card">
+            <div class="card-body text-center">
+              <p>
+                <img class="img-fluid" src="http://localhost:3000/{{product.productImage}}"
+                  alt="{{product.productImage}}">
+              </p>
+              <h4 class="card-title">
+                {{product.name}}
+              </h4>
+              <p class="card-text">
+                {{product.price}}
+              </p>
+              <a href="#" class="btn btn-block btn-primary" target="_blank">See</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { map }  from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { isNullOrUndefined } from 'util';
-import { accessSync } from 'fs';
 
 import { UserInterface } from '../models/user-interface';
 @Injectable({
@@ -18,16 +17,16 @@ export class AuthService {
     "Content-Type": "application/json"
   })
 
-  registerUser(email: string, password: string){
+  registerUser(email: string, password: string) {
     const url_api = `http://localhost:3000/users/signup`;
-    return this.http.post<UserInterface>(url_api, 
+    return this.http.post<UserInterface>(url_api,
       {
         email: email,
         password: password
       },
-     {headers: this.headers}
-     )
-     .pipe(map(data => data));
+      { headers: this.headers }
+    )
+      .pipe(map(data => data));
   }
 
   loginUser(email: string, password: string): Observable<any> {
@@ -40,16 +39,16 @@ export class AuthService {
       {
         headers: this.headers
       }
-      )
+    )
       .pipe(map(data => data))
   }
-  
-  setUser(user: UserInterface):void {
+
+  setUser(user: UserInterface): void {
     let user_string = JSON.stringify(user);
     localStorage.setItem('currentUser', user_string)
   }
 
-  setToken(token):void {
+  setToken(token): void {
     localStorage.setItem('accessToken', token);
   }
 
@@ -57,9 +56,9 @@ export class AuthService {
     localStorage.getItem('accessToken');
   }
 
-  getCurrentUser():UserInterface{
+  getCurrentUser(): UserInterface {
     let user_current = localStorage.getItem('currentUser');
-    if(!isNullOrUndefined(user_current)) {
+    if (!isNullOrUndefined(user_current)) {
       let user: UserInterface = JSON.parse(user_current);
       return user;
     } else {
@@ -67,11 +66,11 @@ export class AuthService {
     }
   }
 
-  logOut(){
+  logOut() {
     let accessToken = localStorage.getItem('accessToken');
     const url_api = `http://localhost:3000users/logout?access_token${accessToken}`;
     localStorage.removeItem('accessToken');
     localStorage.removeItem('currentUser');
-    return this.http.post<UserInterface>(url_api, {headers: this.headers})
+    return this.http.post<UserInterface>(url_api, { headers: this.headers })
   }
 }

@@ -9,6 +9,8 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
+  public app_name = 'Data Client Resolve Studio';
+
   ngOnInit() {
   }
 

@@ -10,14 +10,14 @@ import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { Page404Component } from './components/page404/page404.component';
-
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 /**
  * Services
  */
 import { DataAPIService } from './services/data-api.service';
 import { ProductsComponent } from './components/products/products.component';
- @NgModule({
+@NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
@@ -32,7 +32,8 @@ import { ProductsComponent } from './components/products/products.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [DataAPIService],
   bootstrap: [AppComponent]

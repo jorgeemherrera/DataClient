@@ -37,7 +37,7 @@ export class DataAPIService {
   saveProduct(product: ProductInterface) {
     // TODO: obtener token
     // TODO: not null
-    let token = this.authService.getToken();
+    let token = `Bearer ${this.authService.getToken()}`
     const url_api = `http://localhost:3000/products/?token=${token}`;
     return this.http.post<ProductInterface>(url_api, product, { headers: this.headers })
       .pipe(map(data => data));
@@ -46,7 +46,7 @@ export class DataAPIService {
   updateProduct(product) {
     // TODO: obtener token
     // TODO: not null
-    let token = this.authService.getToken()
+    let token = `Bearer ${this.authService.getToken()}`
     const url_api = `http://localhost:3000/products/?token=${token}`;
     return this.http.put<ProductInterface>(url_api, product, { headers: this.headers })
       .pipe(map(data => data));
@@ -54,7 +54,7 @@ export class DataAPIService {
   deleteProduct(_id: string) {
     // TODO: obtener token
     // TODO: not null
-    let token = this.authService.getToken()
+    let token = `Bearer ${this.authService.getToken()}`
     const url_api = `http://localhost:3000/products/?token=${token}`;
     return this.http.delete<ProductInterface>(url_api, { headers: this.headers })
       .pipe(map(data => data));

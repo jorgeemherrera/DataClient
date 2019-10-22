@@ -10,6 +10,22 @@
                     Register
                   </h1>
                   <div class="form-group">
+                      <input type="text" id="name" name="name" class="form-control" placeholder="name" [(ngModel)]="user.name" required>
+                   </div>
+                   <div class="form-group">
+                      <input type="text" id="lastName" name="lastName" class="form-control" placeholder="last Name" [(ngModel)]="user.lastName" required>
+                   </div>
+                   <div class="form-group">
+                      <input type="text" id="phone" name="phone" class="form-control" placeholder="phone" [(ngModel)]="user.phone" [ngModelOptions]="{standalone: true}" required>
+                   </div>
+                   <div class="form-group">
+                      <input type="date" id="birthday" name="birthday" class="form-control"
+                      placeholder="2018-07-22" [(ngModel)]="user.birthday" [ngModelOptions]="{standalone: true}" required>
+                   </div>
+                   <div class="form-group">
+                      <input type="file" class="form-control-file" id="picture" [(ngModel)]="user.picture">
+                    </div>
+                  <div class="form-group">
                      <input type="email" id="email" name="email" class="form-control" placeholder="email" [(ngModel)]="user.email" required>
                   </div>
                   <div class="form-group">

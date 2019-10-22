@@ -16,14 +16,6 @@ export class ProductsComponent implements OnInit {
     this.getListProducts();
   }
 
-
-  // getListProducts() {
-  //   this.dataAPI.getAllProducts()
-  //     .subscribe((products) => {
-  //       console.log(products)
-  //     })
-  // }
-
   getListProducts() {
     this.dataAPI.getAllProducts()
       .subscribe((products: ProductInterface) => (

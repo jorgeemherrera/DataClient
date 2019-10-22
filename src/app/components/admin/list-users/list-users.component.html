@@ -3,7 +3,7 @@
         <div class="col-lg-4 col-sm-6 col-12 text-center" *ngFor="let user of users">
             <div class="row">
                 <div class="col-12-profile_header">
-                    <img src="{{user.picture}}" alt="">
+                    <img src="http://localhost:3000/{{user.picture}}" alt="">
                 </div>
             </div>
             <div class="row user_details">
@@ -13,7 +13,7 @@
                     <p>Nombre: {{user.name}}</p>
                     <p>Apellidos: {{user.lastName}}</p>
                     <p>Phone: {{user.phone}}</p>
-                    <p>Cumpleaños: {{user.birthday}}</p>
+                    <p>Cumpleaños: {{user.birthday | date:'yyyy-MM-dd' }}</p>
                     <hr>
                 </div>
             </div>

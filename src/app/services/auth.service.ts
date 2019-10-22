@@ -3,7 +3,6 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
-import { isNullOrUndefined } from 'util';
 
 import { UserInterface } from '../models/user-interface';
 @Injectable({
@@ -17,12 +16,25 @@ export class AuthService {
     "Content-Type": "application/json"
   })
 
-  registerUser(email: string, password: string) {
+  registerUser(
+    email: string,
+    password: string,
+    name: string,
+    lastName: string,
+    phone: string,
+    birthday: Date,
+    picture: string
+    ) {
     const url_api = `http://localhost:3000/users/signup`;
     return this.http.post<UserInterface>(url_api,
       {
         email: email,
-        password: password
+        password: password,
+        name: name,
+        lastName: lastName,
+        phone: phone,
+        birthday: birthday,
+        picture: picture
       },
       { headers: this.headers }
     )
@@ -65,17 +77,6 @@ export class AuthService {
     )
       .pipe(map(data => data));
   }
-
-
-  // getCurrentUser(): UserInterface {
-  //   let user_current = localStorage.getItem('currentUser');
-  //   if (!isNullOrUndefined(user_current)) {
-  //     let user: UserInterface = JSON.parse(user_current);
-  //     return user;
-  //   } else {
-  //     return null;
-  //   }
-  // }
 
   logOut() {
     let accessToken = localStorage.getItem('accessToken');

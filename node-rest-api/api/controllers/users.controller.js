@@ -29,14 +29,33 @@ exports.users_signup_user = (req, res, next) => {
                     const user = new User({
                         _id: new mongoose.Types.ObjectId(),
                         email: req.body.email,
-                        password: hash
+                        password: hash,
+                        name: req.body.name,
+                        lastName: req.body.lastName,
+                        phone: req.body.phone,
+                        birthday: req.body.birthday,
+                        picture: req.body.picture
                     });
                     user
                     .save()
                     .then(result => {
                         console.log(result);
                         res.status(201).json({
-                            message: 'User created'
+                            message: 'User created',
+                            createdUser: {
+                                _id: result._id,
+                                email: req.body.email,
+                                password: hash,
+                                name: req.body.name,
+                                lastName: req.body.lastName,
+                                phone: req.body.phone,
+                                birthday: req.body.birthday,
+                                picture: req.body.picture,
+                                request: {
+                                    type: 'POST',
+                                    url: `http://localhost:3000/users/${result._id}`
+                                }
+                            },
                         })
                     })
                     .catch( err => {

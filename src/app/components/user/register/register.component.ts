@@ -13,7 +13,12 @@ export class RegisterComponent implements OnInit {
 
   private user: UserInterface = {
     email: '',
-    password: ''
+    password: '',
+    name: '',
+    lastName: '',
+    phone: '' ,
+    birthday: new Date(),
+    picture: ''
   };
 
   ngOnInit() {

@@ -11,7 +11,7 @@ const userSchema = mongoose.Schema({
     password: {type: String, required: true},
     name: {type: String, required: true},
     lastName: {type: String, required: true},
-    phone: {type: Number, required: true},
+    phone: {type: String, required: true},
     birthday: {type: Date, default: Date.now, required: false},
     picture: {type: String, required: false},
 });

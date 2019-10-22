@@ -14,7 +14,12 @@ export class LoginComponent implements OnInit {
 
   private user: UserInterface = {
     email: '',
-    password: ''
+    password: '',
+    name: '',
+    lastName: '',
+    phone: '' ,
+    birthday: new Date(),
+    picture: ''
   }
 
   ngOnInit() {
@@ -23,7 +28,6 @@ export class LoginComponent implements OnInit {
   login() {
     return this.authService.loginUser(this.user.email, this.user.password)
       .subscribe(data => {
-        // console.log('logueado!!!!!', data);
         this.authService.setUser(data.user);
         let token = data.token;
         this.authService.setToken(token);

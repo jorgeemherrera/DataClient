@@ -72,7 +72,7 @@ exports.users_signup_user = (req, res, next) => {
 
 exports.users_get_all = (req, res, next) => {
     User.find()
-    .select('email ')
+    .select('email name lastName phone birthday picture')
     .exec()
     .then(docs => {
         const response = {
@@ -82,6 +82,11 @@ exports.users_get_all = (req, res, next) => {
                     email: doc.email,
                     _id: doc._id,
                     password: doc.password,
+                    name: doc.name,
+                    lastName: doc.lastName,
+                    phone: doc.phone,
+                    birthday: doc.birthday,
+                    picture: doc.picture,
                     request: {
                         type: 'GET',
                         url: `http://localhost:3000/users/${doc._id}`

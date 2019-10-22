@@ -19,7 +19,7 @@ router.get('/', checkAuth, OrdersController.orders_get_all );
 /**
  * Handle incoming POST request to /orders
  */
-router.post('/', checkAuth, checkAuth, OrdersController.orders_create_order);
+router.post('/', checkAuth, OrdersController.orders_create_order);
 
 /**
  * Handle incoming GET ID request to /orders

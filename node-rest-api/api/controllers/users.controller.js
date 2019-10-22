@@ -51,6 +51,37 @@ exports.users_signup_user = (req, res, next) => {
     })
 }
 
+exports.users_get_all = (req, res, next) => {
+    User.find()
+    .select('email ')
+    .exec()
+    .then(docs => {
+        const response = {
+            count: docs.length, 
+            users: docs.map(doc =>{
+                return {
+                    email: doc.email,
+                    _id: doc._id,
+                    password: doc.password,
+                    request: {
+                        type: 'GET',
+                        url: `http://localhost:3000/users/${doc._id}`
+                    }
+                }
+            })
+        };
+        // if (docs.length >= 0) {
+            res.status(200).json(response);
+        // } else {
+        //     res.status(404).json({message: 'No entries found'});
+        // }
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error: err})
+    })
+}
+
 exports.users_login_user = (req,res,next) =>{
     User.find({ email: req.body.email})
     .exec()

@@ -1,1 +1,20 @@
-<p>profile works!</p>
+<!-- {{user | json}} -->
+
+<section id="profile" class="container">
+    <div class="row mt-5">
+        <div class="col-lg-4 col-sm-6 col-12 text-center" *ngFor="let user of users">
+            <div class="row">
+                <div class="col-12-profile_header">
+
+                </div>
+            </div>
+            <div class="row user_details">
+                <div class="col-12">
+                    <h5>Correo Usuarios</h5>
+                    <p>Email: {{user.email}} </p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -56,15 +56,26 @@ export class AuthService {
     localStorage.getItem('accessToken');
   }
 
-  getCurrentUser(): UserInterface {
-    let user_current = localStorage.getItem('currentUser');
-    if (!isNullOrUndefined(user_current)) {
-      let user: UserInterface = JSON.parse(user_current);
-      return user;
-    } else {
-      return null;
-    }
+  getAllUsers() {
+    const url_api = `http://localhost:3000/users`;
+    return this.http.get<UserInterface>(url_api,
+      {
+        headers: this.headers
+      }
+    )
+      .pipe(map(data => data));
   }
+
+
+  // getCurrentUser(): UserInterface {
+  //   let user_current = localStorage.getItem('currentUser');
+  //   if (!isNullOrUndefined(user_current)) {
+  //     let user: UserInterface = JSON.parse(user_current);
+  //     return user;
+  //   } else {
+  //     return null;
+  //   }
+  // }
 
   logOut() {
     let accessToken = localStorage.getItem('accessToken');

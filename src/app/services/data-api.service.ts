@@ -29,6 +29,7 @@ export class DataAPIService {
     return this.http.get(url_api);
   }
 
+
   getProductById(_id: string) {
     const url_api = `http://localhost:3000/products/${_id}`;
     return (this.product = this.http.get(url_api));

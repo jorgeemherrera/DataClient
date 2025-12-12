@@ -13,8 +13,8 @@
   "dependencies": {
     "@angular/animations": "~8.2.9",
     "@angular/common": "~21.0.1",
-    "@angular/compiler": "~21.0.3",
-    "@angular/core": "~21.0.3",
+    "@angular/compiler": "~21.0.4",
+    "@angular/core": "~21.0.4",
     "@angular/forms": "~21.0.1",
     "@angular/platform-browser": "~21.0.1",
     "@angular/platform-browser-dynamic": "~21.0.3",
@@ -43,7 +43,7 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
-    "protractor": "~5.4.0",
+    "protractor": "~5.4.3",
     "ts-node": "^8.7.0",
     "tslint": "~5.15.0",
     "typescript": "5.9.3"

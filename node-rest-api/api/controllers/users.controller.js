@@ -107,7 +107,13 @@ exports.users_get_all = (req, res, next) => {
 }
 
 exports.users_login_user = (req,res,next) =>{
-    User.find({ email: req.body.email})
+    const email = req.body && typeof req.body.email === 'string' ? req.body.email : null;
+    if (!email) {
+        return res.status(400).json({
+            message: 'Invalid email'
+        });
+    }
+    User.find({ email: { $eq: email } })
     .exec()
     .then(user => {
         if(user.length < 1) {

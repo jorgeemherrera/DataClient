@@ -78,6 +78,6 @@ router.get('/:productId', productsGetByIdLimiter, ProductsController.products_ge
 
 router.patch('/:productId', productsUpdateLimiter, checkAuth, ProductsController.products_update_product);
 
-router.delete('/:productId', checkAuth, productsDeleteLimiter, ProductsController.products_delete_product);
+router.delete('/:productId', productsDeleteLimiter, checkAuth, ProductsController.products_delete_product);
 
 module.exports = router;

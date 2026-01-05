@@ -12,6 +12,11 @@ const User = require('../models/user');
 
 exports.users_signup_user = (req, res, next) => {
     // valid email
+    if (typeof req.body.email !== 'string') {
+        return res.status(400).json({
+            message: 'Invalid email'
+        });
+    }
     User.find({email: req.body.email})
     .exec()
     .then(user =>{

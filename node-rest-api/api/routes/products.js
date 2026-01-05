@@ -12,6 +12,8 @@ const checkAuth = require('../middleware/check-auth');
 
 const ProductsController =require('../controllers/products.controller');
 
+const RateLimit = require('express-rate-limit');
+
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
         cb(null, './uploads/');
@@ -40,10 +42,15 @@ const upload = multer({
 
 const Product = require('../models/product');
 
+const productsGetAllLimiter = RateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 requests per windowMs for this endpoint
+});
+
 /**
  * the rest of the route is on app.js
  */
-router.get('/', ProductsController.products_get_all);
+router.get('/', productsGetAllLimiter, ProductsController.products_get_all);
 
 router.post('/', checkAuth, upload.single('productImage'), ProductsController.products_create_product);
 

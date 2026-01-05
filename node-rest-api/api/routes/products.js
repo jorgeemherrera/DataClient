@@ -52,6 +52,11 @@ const productsUpdateLimiter = RateLimit({
     max: 100 // limit each IP to 100 update requests per windowMs for this endpoint
 });
 
+const productsDeleteLimiter = RateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 delete requests per windowMs for this endpoint
+});
+
 /**
  * the rest of the route is on app.js
  */
@@ -63,6 +68,6 @@ router.get('/:productId', ProductsController.products_get_product);
 
 router.patch('/:productId', checkAuth, productsUpdateLimiter, ProductsController.products_update_product);
 
-router.delete('/:productId', checkAuth, ProductsController.products_delete_product);
+router.delete('/:productId', checkAuth, productsDeleteLimiter, ProductsController.products_delete_product);
 
 module.exports = router;

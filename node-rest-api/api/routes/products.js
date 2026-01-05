@@ -47,6 +47,11 @@ const productsGetAllLimiter = RateLimit({
     max: 100 // limit each IP to 100 requests per windowMs for this endpoint
 });
 
+const productsGetByIdLimiter = RateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 get-by-id requests per windowMs for this endpoint
+});
+
 const productsUpdateLimiter = RateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 100 // limit each IP to 100 update requests per windowMs for this endpoint
@@ -69,7 +74,7 @@ router.get('/', productsGetAllLimiter, ProductsController.products_get_all);
 
 router.post('/', checkAuth, productsCreateLimiter, upload.single('productImage'), ProductsController.products_create_product);
 
-router.get('/:productId', ProductsController.products_get_product);
+router.get('/:productId', productsGetByIdLimiter, ProductsController.products_get_product);
 
 router.patch('/:productId', productsUpdateLimiter, checkAuth, ProductsController.products_update_product);
 

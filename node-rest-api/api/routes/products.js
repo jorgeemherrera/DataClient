@@ -57,12 +57,17 @@ const productsDeleteLimiter = RateLimit({
     max: 100 // limit each IP to 100 delete requests per windowMs for this endpoint
 });
 
+const productsCreateLimiter = RateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 create requests per windowMs for this endpoint
+});
+
 /**
  * the rest of the route is on app.js
  */
 router.get('/', productsGetAllLimiter, ProductsController.products_get_all);
 
-router.post('/', checkAuth, upload.single('productImage'), ProductsController.products_create_product);
+router.post('/', checkAuth, productsCreateLimiter, upload.single('productImage'), ProductsController.products_create_product);
 
 router.get('/:productId', ProductsController.products_get_product);
 

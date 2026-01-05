@@ -71,7 +71,7 @@ router.post('/', checkAuth, productsCreateLimiter, upload.single('productImage')
 
 router.get('/:productId', ProductsController.products_get_product);
 
-router.patch('/:productId', checkAuth, productsUpdateLimiter, ProductsController.products_update_product);
+router.patch('/:productId', productsUpdateLimiter, checkAuth, ProductsController.products_update_product);
 
 router.delete('/:productId', checkAuth, productsDeleteLimiter, ProductsController.products_delete_product);
 

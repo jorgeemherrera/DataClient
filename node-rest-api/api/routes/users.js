@@ -37,6 +37,6 @@ router.get('/', getUsersLimiter, UsersController.users_get_all);
 
 router.post('/login', loginLimiter, UsersController.users_login_user);
 
-router.delete('/:userId', checkAuth, deleteUserLimiter, UsersController.users_delete_user)
+router.delete('/:userId', deleteUserLimiter, checkAuth, UsersController.users_delete_user)
 
 module.exports = router;

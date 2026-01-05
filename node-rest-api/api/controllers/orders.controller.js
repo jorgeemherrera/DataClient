@@ -38,7 +38,13 @@ exports.orders_get_all = (req, res, next) => {
 }
 
 exports.orders_create_order = (req, res, next) => {
-    Product.findById(req.body.productId)
+    const productId = req.body.productId;
+    if (typeof productId !== 'string' || !mongoose.Types.ObjectId.isValid(productId)) {
+        return res.status(400).json({
+            message: 'Invalid productId'
+        });
+    }
+    Product.findById(productId)
         .then(product => {
             if(!product) {
                 return res.status(404).json({
@@ -48,7 +54,7 @@ exports.orders_create_order = (req, res, next) => {
             const order = new Order ({
                 _id: mongoose.Types.ObjectId(),
                 quantity: req.body.quantity,
-                product: req.body.productId
+                product: productId
             });
             return order.save() 
         })

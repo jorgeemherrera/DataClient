@@ -72,7 +72,7 @@ const productsCreateLimiter = RateLimit({
  */
 router.get('/', productsGetAllLimiter, ProductsController.products_get_all);
 
-router.post('/', checkAuth, productsCreateLimiter, upload.single('productImage'), ProductsController.products_create_product);
+router.post('/', productsCreateLimiter, checkAuth, upload.single('productImage'), ProductsController.products_create_product);
 
 router.get('/:productId', productsGetByIdLimiter, ProductsController.products_get_product);
 

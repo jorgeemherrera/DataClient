@@ -12,8 +12,8 @@ import { ProductInterface } from '../models/product-interface';
 export class DataAPIService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  products: Observable<any>;
-  product: Observable<any>;
+  products!: Observable<any>;
+  product!: Observable<any>;
 
   headers: HttpHeaders = new HttpHeaders({
     "Content-Type": "application/json",
@@ -26,7 +26,7 @@ export class DataAPIService {
    */
   getAllProducts() {
     const url_api = `http://localhost:3000/products`;
-    return this.http.get(url_api);
+    return this.http.get<{ products: ProductInterface[] }>(url_api);
   }
 
 
@@ -44,7 +44,7 @@ export class DataAPIService {
       .pipe(map(data => data));
   }
 
-  updateProduct(product) {
+  updateProduct(product: ProductInterface) {
     // TODO: obtener token
     // TODO: not null
     let token = `Bearer ${this.authService.getToken()}`

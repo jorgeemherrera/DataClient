@@ -60,7 +60,7 @@ export class AuthService {
     localStorage.setItem('currentUser', user_string)
   }
 
-  setToken(token): void {
+  setToken(token: string): void {
     localStorage.setItem('accessToken', token);
   }
 
@@ -70,7 +70,7 @@ export class AuthService {
 
   getAllUsers() {
     const url_api = `http://localhost:3000/users`;
-    return this.http.get<UserInterface>(url_api,
+    return this.http.get<{ users: UserInterface[] }>(url_api,
       {
         headers: this.headers
       }

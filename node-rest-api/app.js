@@ -4,6 +4,7 @@
  * App.js
  * 2019
  */
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
@@ -15,13 +16,7 @@ const orderRoutes = require('./api/routes/orders');
 const userRoutes = require('./api/routes/users');
 
 
-mongoose.connect('mongodb+srv://jorgeHerrera:' + process.env.MONGO_ATLAS_PW +           '@node-rest-api-zl10v.mongodb.net/test?retryWrites=true&w=majority',
-    {
-        useCreateIndex: true,
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    }
-);
+mongoose.connect(process.env.MONGO_URI);
 mongoose.Promise = global.Promise;
 /**
  * Let the access to all kind of servers

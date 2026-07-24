@@ -6,13 +6,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  standalone: false
 })
 export class RegisterComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  private user: UserInterface = {
+  user: UserInterface = {
     email: '',
     password: '',
     name: '',
@@ -34,13 +35,13 @@ export class RegisterComponent implements OnInit {
       this.user.birthday = new Date(this.user.birthday),
       this.user.picture
     )
-      .subscribe(user => {
+      .subscribe((user: UserInterface) => {
         this.authService.setUser(user);
         // let token = user._id;
         // this.authService.setToken(token);
         this.router.navigate(['/user/profile']);
       },
-        err => console.log(err)
+        (err: any) => console.log(err)
       )
   }
 

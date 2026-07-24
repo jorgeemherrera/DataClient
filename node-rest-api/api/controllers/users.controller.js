@@ -157,7 +157,7 @@ exports.users_login_user = (req,res,next) =>{
 }
 
 exports.users_delete_user = (req, res, next) => {
-    User.remove({ _id: req.params.userId })
+    User.deleteOne({ _id: req.params.userId })
     .exec()
     .then(result => {
         res.status(200).json({

@@ -22,7 +22,8 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
+            "buildOptimizer": false,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -72,18 +73,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "front-data-client:build"
+            "buildTarget": "front-data-client:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "front-data-client:build:production"
+              "buildTarget": "front-data-client:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "front-data-client:build"
+            "buildTarget": "front-data-client:build"
           }
         },
         "test": {
@@ -130,5 +131,8 @@
         }
       }
     }},
-  "defaultProject": "front-data-client"
+  "defaultProject": "front-data-client",
+  "cli": {
+    "analytics": "8319e403-ac36-4fa8-993e-ff4d2fd48828"
+  }
 }

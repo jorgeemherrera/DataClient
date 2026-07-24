@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { DataAPIService } from 'src/app/services/data-api.service';
 import { ProductInterface } from '../../models/product-interface';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  styleUrls: ['./products.component.scss'],
+  standalone: false
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private dataAPI: DataAPIService) { }
+  constructor(private dataAPI: DataAPIService, private cdr: ChangeDetectorRef) { }
 
-  private products: ProductInterface;
+  products: ProductInterface[] = [];
 
   ngOnInit() {
     this.getListProducts();
@@ -18,9 +19,9 @@ export class ProductsComponent implements OnInit {
 
   getListProducts() {
     this.dataAPI.getAllProducts()
-      .subscribe((products: ProductInterface) => (
-        this.products = products['products']
-      )
-      );
+      .subscribe((response: { products: ProductInterface[] }) => {
+        this.products = response.products;
+        this.cdr.markForCheck();
+      });
   }
 }
